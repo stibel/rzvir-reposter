@@ -2,7 +2,7 @@ const Instagram = require("instagram-web-api");
 
 const FB = require("fb")
 
-FB.setAccessToken('EAADckJh3bY0BAGz1zZAOpnbvPivaDJZBb0bDEWcaZCZAvltlGSfH0U9vwFIV2DPRy5kpfYxFsbd4H4Uvgb5ZAtjWWRlwi98BSFVVhYhZBMdKsEix4FxqHaG9sUbVPZA2FksZCSvDnHOfYBikjYfjGB1zmsL1RguNZBFEoa2pt9t8XBa2ybaiRCOfPlJVnCEUdObh56dZACKD9jhZA5vZAboQZBZAIU')
+FB.setAccessToken(process.env.KEY)
 
 const getLatestPost = async () => {
     const { data: [{ message, full_picture }] } = await FB.api('RZVIROVNIA/feed',
@@ -16,8 +16,8 @@ const getLatestPost = async () => {
 const postToInstagram = async () => {
 
     const client = new Instagram({
-        username: 'rzwirowniaofficial@gmail.com',
-        password: 'Rzwirek123!'
+        username: process.env.LOGIN,
+        password: process.env.PASS
     })
 
     const { message, full_picture } = await getLatestPost()
