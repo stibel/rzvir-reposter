@@ -2,15 +2,25 @@ const Instagram = require("instagram-web-api");
 
 const FB = require("fb")
 
+require('dotenv').config();
+
 FB.setAccessToken(process.env.KEY)
 
 const getLatestPost = async () => {
-    const { data: [{ message, full_picture }] } = await FB.api('RZVIROVNIA/feed',
-        {
-            limit: 1,
-            fields: ['message', 'full_picture']
-        })
-    return { message, full_picture }
+    try {
+
+        const { data: [{ message, full_picture }] } = await FB.api('RZVIROVNIA/feed',
+            {
+                limit: 1,
+                fields: ['message', 'full_picture']
+            })
+        return { message, full_picture }
+
+    }
+    catch (err) {
+        console.error(err)
+        return
+    }
 }
 
 const postToInstagram = async () => {

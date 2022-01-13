@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^11.0.0",
     "fb": "^2.0.0",
     "instagram-web-api": "^2.2.2"
   }
